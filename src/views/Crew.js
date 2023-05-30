@@ -28,14 +28,18 @@ const Crew = () => {
                     <span className="text-xl pt-8 uppercase">
                         {data.crew[index].role}
                     </span>
-                    <h1 className="text-6xl uppercase text-white pb-8">
+                    <h1 className="text-6xl uppercase text-ellipsis w-full overflow-hidden text-white pb-8">
                         {data.crew[index].name}
                     </h1>
                     <p className="pb-8">{data.crew[index].bio}</p>
 
-                    <div className="grid grid-cols-2 gap-10 justify-between md:mt-10 text-white uppercase text-lg">
-                        <button onClick={() => {changeCrew(-1)}} className="inline-block"><span className="material-icons-outlined">navigate_back</span>Prev</button>
-                        <button onClick={() => {changeCrew(1)}} className="inline-block">Next<span className="material-icons-outlined">navigate_next</span></button>
+                    <div className="flex justify-between w-full items-center md:mt-10 text-white uppercase text-lg">
+                        <div>
+                            <button onClick={() => {changeCrew(-1)}} className="flex items-center"><span className="material-icons-outlined">arrow_back_ios</span>Prev</button>
+                        </div>
+                        <div>
+                          <button onClick={() => {changeCrew(1)}} className="flex items-center">Next<span className="material-icons-outlined">arrow_forward_ios</span></button>
+                        </div>
                     </div>    
                     
                 </div>
