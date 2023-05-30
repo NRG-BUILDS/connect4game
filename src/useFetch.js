@@ -1,34 +1,31 @@
 import { useEffect, useState } from "react";
-const useFetch = (url) => {
-    const [data, setData] = useState(null)
-    const [isPending, setIsPending] = useState(true)
-    const [error, setError] = useState(false)
 
+const useFetch = (url) => {
+    const [isPending, setIsPending] = useState(true);
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    
     useEffect(() => {
         fetch(url)
         .then(res => {
-            if(!res.ok) { 
-                throw Error('Soomething really bad happened');
+            if (!res.ok) {
                 setIsPending(false);
+                throw Error("Seems like we don't have what your looking for")
             }
-            return res.json();
+           return res.json()
         })
         .then(data => {
-            setData(data.results);
-            setIsPending(false);
-            setError(false);
+            console.log(data)
+            setData(data)
+            setIsPending(false)
+            setError(null)
         })
         .catch(err => {
-            if(err.message === 'Failed to fetch') {
-                err.message = 'Unable to connect'
-            }
-            console.log(err.message)
             setError(err.message);
             setIsPending(false)
-
         })
     }, [url])
-    return { data, isPending, error }
+    return {data, isPending, error};
 }
  
 export default useFetch;

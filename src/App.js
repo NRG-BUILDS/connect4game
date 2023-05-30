@@ -1,46 +1,34 @@
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './Navbar.js';
-import NavMenu from './NavMenu.js';
-import Home from './Home.js';
-import Discover from './Discover.js';
-import TopRatedSection from './TopRatedSection.js';
-import Settings from './Settings.js';
-import UserMenu from './UserMenu.js';
-import MoviePage from './MoviePage.js';
+import Navbar from './components/Navbar';
+import Home from './views/Home';
+import Destination from './views/Destination';
+import Crew from './views/Crew';
+import Technology from './views/Technology';
 function App() {
 
   return (
     <Router>
-      <div className="App">
-          <NavMenu/>
-        <div className="container">
-          <Navbar/>
-          <UserMenu/>
-          <div className="content">
-            <Switch>
+    <div className="App">
+        <Navbar />
+        <div className="content">
+          <Switch>
               <Route exact path='/'>
-                <Home/>
+                <Home />
               </Route>
-              <Route path='/discover'>
-                <Discover/>
+              <Route path='/destination/:place'>
+                <Destination />
               </Route>
-              <Route path='/movie/:id'>
-                <MoviePage/>
+              <Route path='/crew'>
+                <Crew />
               </Route>
-              <Route path='/settings'>
-                <Settings/>
+              <Route path ='/technology'>
+                <Technology />
               </Route>
-              <Route path='/top-rated'>
-                <TopRatedSection/>
-              </Route>
-                
-            </Switch> 
-          </div>
-        </div>
-        
-      </div>
+          </Switch>
+        </div> 
+    </div>
     </Router>
-    
   );
 }
 
