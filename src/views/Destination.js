@@ -19,7 +19,7 @@ const Destination = () => {
     const showData = () => {
         let currentData;
         for(let i = 0; i < data.destinations.length; i++) {
-            if (data.destinations[i].name == place) {
+            if (data.destinations[i].name === place) {
                 currentData = data.destinations[i]
             }
         }
