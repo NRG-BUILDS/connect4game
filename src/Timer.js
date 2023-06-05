@@ -17,7 +17,7 @@ const Timer = ({player, switchPlayer, setTimer, timer}) => {
                 
             })
         }, 1000)
-    }, [])
+    }, [player])
 
     return ( 
         <div className="timer bg-red-600 text-white border-2 border-black shadow-sharp shadow-black rounded-2xl p-4 w-40 mx-auto font-bold right-1/2 text-center -translate-y-1">
