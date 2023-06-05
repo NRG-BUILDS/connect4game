@@ -1,15 +1,31 @@
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Scoreboard from './Scoreboard';
 import Gameboard from './Gameboard';
-import Home from './Home';
+import Rules from './Rules';
+import Menu from './Menu';
+import Create from './Create';
+import TopMenu from './TopMenu';
 
 function App() {
 
   return (
     <Router>
     <div className="App">
-        <Home />
+        <Switch>
+            <Route exact path='/'>
+                <Menu />
+            </Route>
+            <Route path='/play/:redPlayer/:yellowPlayer'>
+                <TopMenu />
+                <Gameboard />
+            </Route>
+            <Route path='/rules'>
+                <Rules />
+            </Route>
+            <Route path='/create-players'>
+                <Create />
+            </Route>
+        </Switch>
     </div>
     </Router>
   );

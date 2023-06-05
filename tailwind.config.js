@@ -5,9 +5,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        fontBig: ['Nanum Myeongjo'],
-        primary: ['Monomaniac One']
+      boxShadow: {
+        sharp: ['0 10px 2px'],
       }
     },
   },
