@@ -30,14 +30,14 @@ const Gameboard = () => {
     const [player, setPlayer] = useState('red'); //player colors
     const [currentPlayer, setCurrPlayer] = useState(redPlayer) //player making current move
     const [winner, setWinner] = useState(false) //isWinner bool
-    const [colArray, setColArray] = useState(
+    const [colArray] = useState(
         [
             [],[],[],
             [],[],[],
             []
         ]
     )
-    const [rowArray, setRowArray] = useState(
+    const [rowArray] = useState(
         [
             [],[],[],
             [],[],[], []
@@ -148,7 +148,7 @@ const Gameboard = () => {
             </div>
 
             <div className="md:order-2 md:w-1/2 h-full grid grid-cols-7 gap-2 overflow-hidden bg-white rounded-3xl shadow-black shadow-sharp p-1 pb-8 border-2 border-black">
-                <div className="board-column-1 grid gap-2 border border-white transition-all duration-100 hover:border-red-500 " onClick={() => {columnClick(0, col0Click, setCol0Click);}} >
+                <div className="board-column-1 grid gap-2 border border-white transition duration-100 hover:border-red-500 " onClick={() => {columnClick(0, col0Click, setCol0Click);}} >
                     <Button array={colArray} column={0} cell={5}/>
                     <Button array={colArray} column={0} cell={4}/>
                     <Button array={colArray} column={0} cell={3}/>
