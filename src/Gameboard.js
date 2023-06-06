@@ -67,6 +67,7 @@ const Gameboard = () => {
                 JSON.parse(localStorage.getItem('colArray'))
             )
         }
+         // eslint-disable-next-line
     }, [])
     const columnClick = (colNum, colClicks, incClicks) => {
         switchPlayer();
