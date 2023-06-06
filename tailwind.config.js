@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       boxShadow: {
         sharp: ['0 10px 2px'],
+      },
+      fontFamily:  {
+        header: ['Audiowide']
       }
     },
   },

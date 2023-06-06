@@ -161,7 +161,7 @@ const Gameboard = () => {
     }
 
     return ( 
-       <section className="gameboard">
+       <section className="gameboard my-4">
             <div className="flex flex-wrap  items-center justify-center gap-10 max-w-6xl md:h-96 mx-auto p-4">
             <div className="scoreCard bg-red-400 md:order-1">
                 <h2 className="uppercase">red</h2>

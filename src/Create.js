@@ -23,7 +23,7 @@ const Create = () => {
 
     return ( 
         <section className="h-screen flex items-center mx-4 justify-center">
-            <div className="max-w-5xl text-center mx-auto rounded-3xl border-orange-600 border-4 sha">
+            <div className="max-w-5xl text-center mx-auto rounded-3xl border-orange-600 border-4 shadow-2xl">
                 <form onSubmit={handleSubmit}>
                     <h1 className="text-xl my-8 font-extrabold">Pick Your Balls</h1>
                     <div className="grid grid-cols-2 items-center">
