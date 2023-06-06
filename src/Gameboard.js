@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import redBall from './assests/red.png'
 import yellowBall from './assests/yellow.png'
@@ -26,18 +26,20 @@ const Button = ({array, column, cell}) => {
  
 
 const Gameboard = () => {
-    const {redPlayer, yellowPlayer} = useParams() //player names
+    const {redPlayer, yellowPlayer, gameType} = useParams() //player names
+    const [redPlayerDisplay, setRedPlayerDisplay] = useState(redPlayer)
+    const [yellowPlayerDisplay, setYellowPlayerDisplay] = useState(yellowPlayer)
     const [player, setPlayer] = useState('red'); //player colors
-    const [currentPlayer, setCurrPlayer] = useState(redPlayer) //player making current move
+    const [currentPlayer, setCurrPlayer] = useState(redPlayerDisplay) //player making current move
     const [winner, setWinner] = useState(false) //isWinner bool
-    const [colArray] = useState(
+    const [colArray, setColArray] = useState(
         [
             [],[],[],
             [],[],[],
             []
         ]
     )
-    const [rowArray] = useState(
+    const [rowArray, setRowArray] = useState(
         [
             [],[],[],
             [],[],[], []
@@ -53,7 +55,19 @@ const Gameboard = () => {
     const [col5Click, setCol5Click] = useState(0)
     const [col6Click, setCol6Click] = useState(0)
     
-    
+    useEffect(() => {
+        if (gameType === 'load') {
+            setRedPlayerDisplay(localStorage.getItem('redPlayer'));
+            setYellowPlayerDisplay(localStorage.getItem('yellowPlayer'));
+
+            setRowArray(
+                JSON.parse(localStorage.getItem('rowArray'))
+            )
+            setColArray(
+                JSON.parse(localStorage.getItem('colArray'))
+            )
+        }
+    }, [])
     const columnClick = (colNum, colClicks, incClicks) => {
         switchPlayer();
         
@@ -67,6 +81,7 @@ const Gameboard = () => {
         // THIS SETS OFF A SERIES OF CHECKS FOR A WIN STARTING WITH VERTICAL COLS 
         setWinner( checkColWinner(colArray, colNum) );
         console.log(winner)
+        saveGame();
     }
 
     const checkColWinner = (arr, num) => {
@@ -117,34 +132,43 @@ const Gameboard = () => {
 
         if (player === 'red') {
             setPlayer('yellow');
-            setCurrPlayer(redPlayer)
+            setCurrPlayer(redPlayerDisplay)
             document.querySelector('.timer').classList.remove('bg-red-600')
             document.querySelector('.timer').classList.add('bg-yellow-600')
             let timerArrow = document.querySelector('.timer');
             timerArrow.style.setProperty('--currentPlayerColor', 'rgb(202 138 4)')
         } else {
             setPlayer('red');
-            setCurrPlayer(yellowPlayer)
+            setCurrPlayer(yellowPlayerDisplay)
             document.querySelector('.timer').classList.remove('bg-yellow-600')
             document.querySelector('.timer').classList.add('bg-red-600')
             let timerArrow = document.querySelector('.timer');
             timerArrow.style.setProperty('--currentPlayerColor', 'rgb(220 38 38)')
 
         }
+    }
+    const saveGame = () => {
+        let row = JSON.stringify(rowArray)
+        let col = JSON.stringify(colArray)
 
-        
+
+        localStorage.setItem('redPlayer', redPlayer)
+        localStorage.setItem('yellowPlayer', yellowPlayer)
+        localStorage.setItem('rowArray', row);
+        localStorage.setItem('colArray', col);
+
     }
 
     return ( 
        <section className="gameboard">
-            <div className="flex flex-wrap grow basis-40 items-center justify-center gap-10 max-w-6xl md:h-96 mx-auto">
+            <div className="flex flex-wrap  items-center justify-center gap-10 max-w-6xl md:h-96 mx-auto p-4">
             <div className="scoreCard bg-red-400 md:order-1">
-                <h2 className="uppercase">player red</h2>
-                <span className="text-2xl font-extrabold uppercase">{redPlayer}</span>
+                <h2 className="uppercase">red</h2>
+                <span className="text-2xl font-extrabold uppercase">{redPlayerDisplay}</span>
             </div>
             <div className="scoreCard bg-yellow-400 md:order-3">
-                <h2 className="uppercase">player yellow</h2>
-                <span className="text-2xl font-extrabold uppercase">{yellowPlayer}</span>
+                <h2 className="uppercase">yellow</h2>
+                <span className="text-2xl font-extrabold uppercase">{yellowPlayerDisplay}</span>
             </div>
 
             <div className="md:order-2 md:w-1/2 h-full grid grid-cols-7 gap-2 overflow-hidden bg-white rounded-3xl shadow-black shadow-sharp p-1 pb-8 border-2 border-black">

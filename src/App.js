@@ -15,7 +15,7 @@ function App() {
             <Route exact path='/'>
                 <Menu />
             </Route>
-            <Route path='/play/:redPlayer/:yellowPlayer'>
+            <Route path='/play/:redPlayer/:yellowPlayer/:gameType'>
                 <TopMenu />
                 <Gameboard />
             </Route>

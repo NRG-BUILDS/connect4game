@@ -7,17 +7,17 @@ const Menu = () => {
                 <img src="logo.jpg" alt="" />
             </div>
             <Link to='/create-players'>
-                <div className="w-full p-6 text-xl text-white bg-red-500 border-2 border-black rounded-2xl shadow-black shadow-sharp font-bold uppercase">
-                    <h2>name players</h2>
+                <div className="fadeIn w-full p-6 text-xl text-white bg-red-500 border-2 border-black rounded-2xl shadow-black shadow-sharp font-bold uppercase">
+                    <h2>New Game</h2>
                 </div>
             </Link>
-            <Link to='/play/player1/player2'>
-                <div className="w-full p-6 text-xl border-2 bg-yellow-500 border-black rounded-2xl shadow-black shadow-sharp font-bold uppercase">
-                    <h2>play</h2>
+            <Link to='/play/player1/player2/load'>
+                <div className="fadeIn w-full p-6 text-xl border-2 bg-yellow-500 border-black rounded-2xl shadow-black shadow-sharp font-bold uppercase">
+                    <h2>Resume</h2>
                 </div>
             </Link>
             <Link to='/rules'>
-                <div className="w-full p-6 text-xl border-2 bg-white border-black rounded-2xl shadow-black shadow-sharp font-bold uppercase">
+                <div className="fadeIn w-full p-6 text-xl border-2 bg-white border-black rounded-2xl shadow-black shadow-sharp font-bold uppercase">
                     <h2>game rules</h2>
                 </div>
             </Link>
